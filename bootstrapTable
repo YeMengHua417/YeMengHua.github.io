@@ -1,0 +1,25 @@
+gridOptions:any = {
+    method:'get',  请求后端的URl方法
+    [url='api/v1.0/fm/alarms]url:'api/v1.0/fm/alarms'[/url], url固定部分
+    queryParams:params =>this.queryParams(params, this.exportData),url参数部分
+    sidePagination:'server',表示后端分页，前端是client
+    pagination: true,// 是否分页
+    pageSize: 10,//分页默认页数
+    pageNumber:1,页码起始
+    pageList:[5,10],分页选择的页码的下拉菜单
+    paginationDetailHAlign: 'right',//分页信息的位置
+    paginationHAlign: 'right',//
+    sortable: true,//是否排序
+    sortOrder:'asc',默认排序
+    search:true,是否显示搜索框
+  };
+  
+  queryParams(params:any, exportData:any){
+    let tmp={
+      pageSize:params.limit,
+      currentPage:params.offset/params.limit + 1,
+      sort:params.order,
+      sortName:params.sort,
+      fuzzy:params.search,
+    } 
+  }
